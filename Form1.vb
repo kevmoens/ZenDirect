@@ -94,6 +94,7 @@ Public Class Form1
                                                                                   .postalcode = row("Postal Code").Cast(Of String)(), _
                                                                                   .email = row("E-mail").Cast(Of String)(), _
                                                                                   .phone = row("Phone").Cast(Of String)() _
+                                                                                  , .contactgroup = row("Group").Cast(Of String)() _
                                                                                   }).ToList
             Dim i As Integer = 0
             Dim iCount As Integer = query.Count.ToString

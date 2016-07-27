@@ -169,6 +169,18 @@ Public Class Contact
             _contactId = value
         End Set
     End Property
+
+
+    Private _contactgroup As String
+    Public Property contactgroup() As String
+        Get
+            Return _contactgroup
+        End Get
+        Set(ByVal value As String)
+            _contactgroup = value
+        End Set
+    End Property
+
     Public Sub Delete(Optional ByVal ShowMessage As Boolean = True)
         Dim resourceUrl = String.Format("http://api.zendirect.com/v2/contact/deletecontact/{0}/", _id)
         Dim delContact = New NameValueCollection()
@@ -197,6 +209,7 @@ Public Class Contact
         newContact.Add("email", If(_email Is Nothing, "", _email))
         newContact.Add("phone", If(_phone Is Nothing, "", _phone))
         newContact.Add("birthdate", "")
+        newContact.Add("contactgroup", If(_contactgroup Is Nothing, "", _contactgroup))
         Dim client = New WebClient()
 
         client.Headers("Authorization") = "Bearer " + g_AuthToken
